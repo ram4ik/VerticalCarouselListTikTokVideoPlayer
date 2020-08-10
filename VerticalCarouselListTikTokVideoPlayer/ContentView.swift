@@ -26,7 +26,7 @@ struct Home: View {
         TabView(selection: $index) {
             ForEach(1...10, id: \.self) { i in
                 ZStack {
-                    Color.red
+                    Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
                     Text("SwiftUI")
                 }
                 .padding()
