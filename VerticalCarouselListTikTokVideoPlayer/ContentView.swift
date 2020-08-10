@@ -20,14 +20,28 @@ struct ContentView: View {
 
 struct Home: View {
     @State var index = 0
+    var edges = UIApplication.shared.windows.first?.safeAreaInsets
     
     var body: some View {
         TabView(selection: $index) {
             ForEach(1...10, id: \.self) { i in
-                Color.red
-                    .padding()
+                ZStack {
+                    Color.red
+                    Text("SwiftUI")
+                }
+                .padding()
+                .rotationEffect(.init(degrees: -90))
+                //setting with
+                .frame(width: UIScreen.main.bounds.width)
+                
             }
         }
+        // simple logic
+        .rotationEffect(.init(degrees: 90))
+        // if view is rotated means width will be equal to height...
+        .frame(width: UIScreen.main.bounds.height - (edges!.top + edges!.bottom))
+        
+        
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         .background(Color.black.ignoresSafeArea(.all, edges: .all))
     }
